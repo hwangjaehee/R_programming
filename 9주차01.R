@@ -48,3 +48,50 @@ B=subset(S,X1%%2!=0);B #사건B. 홀수의 눈이 나오는 경우, B 모든 경
 nrow(B) #사건 B의 원소의 개수
 C=subset(S,X1%%3==0); #사건 C의 원소의 개수,C출력
 nrow(C)
+
+cat("P(A)=n(A)/n(S)=",nrow(A)/nrow(S),"\n")
+cat( "사건 A가 일어날 확률은", nrow(A)/nrow(S),"이다.","\n")
+
+#예제5
+#1에서 9까지 숫자가 하나씩 적힌 개의 공이 들어 있는 주머니
+#주머니에서 한 개의 공을 꺼내는 시행
+#꺼낸 공에 적힌 숫자가 홀수인 사건을 A
+#8의 약수인 사건을 B
+#3의 배수인 사건을 C
+
+
+# library( ) 함수를 이용하여 ‘prob’를 불러오기
+library(prob)
+# c( )를 이용하여 표본공간을 객체 S에 할당함
+S <- c(1:9) 
+# A, B, C 사건을 각각 구함
+A=subset(S, S %% 2==1)
+B=subset(S, 8 %% S==0)
+C=subset(S, S %% 3==0)
+
+# (1) union( )을 이용하여 합집합(사건)을 구함
+union(A, B) #각 집합을 순서대로 중복되지 않게 합치는 느낌 
+subset(S, S %% 2==1 | 8 %% S==0 ) #오름차순으로 정렬까지 함
+
+# (2) intersect( )를 이용하여 교집합(사건)을 구함
+intersect(A, C)
+subset(S, S %% 2==1 & S %% 3==0)
+
+# (3) intersect( )를 이용하여 교집합을 구하며, integer(0)은 공집합을 나타냄
+intersect(B, C)
+subset(S, 8 %% S==0 & S %% 3==0)
+# integer(0) 은 공집합을 나타냄
+
+# (4)setdiff( )를 이용하여 여집합을 구함
+setdiff(S, A)
+subset(S, S %% 2 != 1)
+
+# (5) setdiff( )를 이용하여 여집합을 구함
+setdiff(S, B)
+subset(S, 8 %% S != 0)
+
+# (6) setdiff()를 이용하여 여집합을 구함
+intersect( setdiff(S, A), setdiff(S, B) )
+subset(S, S %% 2 != 1 & 8 %% S != 0)
+
+setdiff( S, union(A, B) ) # De Morgan's laws
