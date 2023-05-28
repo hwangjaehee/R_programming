@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Adding Random Variables to a Probability Space</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body><div class="container">
+
+<table width="100%" summary="page for addrv {prob}"><tr><td>addrv {prob}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Adding Random Variables to a Probability Space</h2>
+
+<h3>Description</h3>
+
+<p>Adds a column to a data frame probability space containing the values of a random variable computed from the existing columns of the space.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+addrv(space, FUN = NULL, invars = NULL, name = NULL, ...)
+
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>space</code></td>
+<td>
+<p>a data frame with a <code>probs</code> column.</p>
+</td></tr>
+<tr valign="top"><td><code>FUN</code></td>
+<td>
+<p>a function to be applied to each row of outcomes in <code>space</code></p>
+</td></tr>
+<tr valign="top"><td><code>invars</code></td>
+<td>
+<p>a character vector indicating input columns of <code>space</code></p>
+</td></tr>
+<tr valign="top"><td><code>name</code></td>
+<td>
+<p>an (optional) name to give the defined random variable.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>an expression defining a random variable.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>There are two ways to add a random variable to a data frame probability space; see the examples.  The argument <code>FUN</code> has precedence and will be used if specified.  If <code>name</code> is not specified, then the new random variable will be called <code>X</code>.  Note that this function only works for data frames, as a method for objects of class <code>ps</code> has not been implemented.
+</p>
+
+
+<h3>Value</h3>
+
+<p>The input data frame with an additional column called <code>name</code>.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>G. Jay Kerns <a href="mailto:gkerns@ysu.edu">gkerns@ysu.edu</a>.</p>
+
+
+<h3>See Also</h3>
+
+<p>See <code><a href="../../base/help/transform.html">transform</a></code> to add a column to a data frame of outcomes (not yet a probability space).</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+S &lt;-rolldie(3, makespace = TRUE)
+addrv(S, sum, name = "Y")
+addrv(S, Z = X3 - X2 )
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>prob</em> version 1.0-1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

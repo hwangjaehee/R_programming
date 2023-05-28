@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Empirical Summary of a Simulation</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body><div class="container">
+
+<table width="100%" summary="page for empirical {prob}"><tr><td>empirical {prob}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Empirical Summary of a Simulation</h2>
+
+<h3>Description</h3>
+
+<p>Calculates relative frequencies of the rows of a data frame.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+empirical(x)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>a data frame.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>The function works by adding a <code>probs</code> column to <code>x</code> with equally likely entries of <i>1/n</i>, where <i>n</i> is the number of rows.  Then it aggregates the duplicated rows of <code>x</code> while accumulating the probabilities associated with each.
+</p>
+
+
+<h3>Value</h3>
+
+<p>A data frame formed by aggregating the rows of <code>x</code>.  A <code>probs</code> column is added giving the relative frequencies of each of the rows.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>G. Jay Kerns <a href="mailto:gkerns@ysu.edu">gkerns@ysu.edu</a>.</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../help/sim.html">sim</a></code></p>
+
+
+<h3>Examples</h3>
+
+<pre>
+S &lt;- tosscoin(2, makespace = TRUE)
+sims &lt;- sim(S, ntrials = 50000)
+empirical(sims)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>prob</em> version 1.0-1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

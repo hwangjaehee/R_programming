@@ -1,0 +1,418 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Characteristic functions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body><div class="container">
+
+<table width="100%" summary="page for CharFunc {prob}"><tr><td>CharFunc {prob}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Characteristic functions</h2>
+
+<h3>Description</h3>
+
+<p>The characteristic functions for selected probability distributions supported
+by <span style="font-family: Courier New, Courier; color: #666666;"><b>R</b></span>.  All base distributions are included, with the exception of
+<code>wilcox</code> and <code>signedrank</code>.  For more resources please see the
+References, and for complete details and formulas see the <code>charfunc</code>
+vignette, which can be accessed by <code>vignette("charfunc")</code> at the
+command prompt.  Only the simplest formulas are listed below.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+cfbeta(t, shape1, shape2, ncp = 0)
+cfbinom(t, size, prob)
+cfcauchy(t, location = 0, scale = 1)
+cfchisq(t, df, ncp = 0)
+cfexp(t, rate = 1)
+cff(t, df1, df2, ncp, kmax = 10)
+cfgamma(t, shape, rate = 1, scale = 1/rate)
+cfgeom(t, prob)
+cfhyper(t, m, n, k)
+cflnorm(t, meanlog = 0, sdlog = 1)
+cflogis(t, location = 0, scale = 1)
+cfnbinom(t, size, prob, mu)
+cfnorm(t, mean = 0, sd = 1)
+cfpois(t, lambda)
+cfsignrank(t, n)
+cft(t, df, ncp)
+cfunif(t, min=0, max=1)
+cfweibull(t, shape, scale = 1)
+cfwilcox(t, m, n)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>t</code></td>
+<td>
+<p>numeric value.  Some of the above are vectorized functions.</p>
+</td></tr>
+<tr valign="top"><td><code>df</code></td>
+<td>
+<p>degrees of freedom (<i>&gt; 0</i>, maybe non-integer)</p>
+</td></tr>
+<tr valign="top"><td><code>df1, df2</code></td>
+<td>
+<p>degrees of freedom (<i>&gt; 0</i>, maybe non-integer)</p>
+</td></tr>
+<tr valign="top"><td><code>k</code></td>
+<td>
+<p>the number of balls drawn from the urn.</p>
+</td></tr>
+<tr valign="top"><td><code>kmax</code></td>
+<td>
+<p>upper limit of summation.</p>
+</td></tr>
+<tr valign="top"><td><code>lambda</code></td>
+<td>
+<p>vector of (positive) means.</p>
+</td></tr>
+<tr valign="top"><td><code>location, scale</code></td>
+<td>
+<p>location and scale parameters; scale must be positive.</p>
+</td></tr>
+<tr valign="top"><td><code>m</code></td>
+<td>
+<p>the number of white balls in the urn.</p>
+</td></tr>
+<tr valign="top"><td><code>meanlog, sdlog</code></td>
+<td>
+<p>mean and standard deviation of the distribution
+on the log scale with default values of <code>0</code> and <code>1</code> respectively.</p>
+</td></tr>
+<tr valign="top"><td><code>mean</code></td>
+<td>
+<p>vector of means.</p>
+</td></tr>
+<tr valign="top"><td><code>min, max</code></td>
+<td>
+<p>(unif) lower and upper limits of the distribution.
+Must be finite and in the correct order.</p>
+</td></tr>
+<tr valign="top"><td><code>mu</code></td>
+<td>
+<p>(nbinom) alternative parametrization via mean</p>
+</td></tr>
+<tr valign="top"><td><code>n</code></td>
+<td>
+<p>the number of black balls in the urn.</p>
+</td></tr>
+<tr valign="top"><td><code>ncp</code></td>
+<td>
+<p>non-centrality parameter <i>&delta;</i></p>
+</td></tr>  
+<tr valign="top"><td><code>prob</code></td>
+<td>
+<p>probability of success in each trial.</p>
+</td></tr>
+<tr valign="top"><td><code>rate</code></td>
+<td>
+<p>an alternative way to specify the scale; must be positive.</p>
+</td></tr>  
+<tr valign="top"><td><code>sd</code></td>
+<td>
+<p>vector of standard deviations.</p>
+</td></tr>
+<tr valign="top"><td><code>shape</code></td>
+<td>
+<p>shape parameter, must be positive (gamma, weibull)</p>
+</td></tr>
+<tr valign="top"><td><code>shape1, shape2</code></td>
+<td>
+<p>shape parameters (beta).</p>
+</td></tr>
+<tr valign="top"><td><code>size</code></td>
+<td>
+<p>number of trials (binom) or target for number of successful trials
+(nbinom).</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>The characteristic function <i>&phi;</i> of a random variable <i>X</i> is defined by
+</p>
+<p style="text-align: center;"><i>phi(t) = E e^(-itX)</i></p>
+
+<p>for all <i>-&infin; &lt; t &lt; &infin;</i>.
+</p>
+<p>Every random variable has a characteristic function, and every characteristic function
+uniquely determines the distribution of its associated random variable.  For
+more details on characteristic functions and their properties, see Lukacs (1970).
+</p>
+
+
+<h3>Value</h3>
+
+<p>a complex number in rectangular (cartesian) coordinates.
+</p>
+
+
+<h3>Beta distribution</h3>
+
+<p>For the probability density function, see <code><a href="../../stats/html/Beta.html">dbeta</a></code>.
+</p>
+<p>The characteristic function for central Beta is given by
+</p>
+<p style="text-align: center;"><i>
+    phi(t) = _{1}F_{1}(shape1; shape1 + shape2, it) 
+  </i></p>
+
+<p>where <i>F</i> is the confluent hypergeometric function calculated with
+<code><a href="../../fAsianOptions/help/kummerM.html">kummerM</a></code> in the <code>fAsianOptions</code> package.
+</p>
+<p>As of the time of this writing, we must calculate the characteristic function
+of the noncentral Beta with numerical integration according to the definition.
+</p>
+
+
+<h3>Binomial distribution</h3>
+
+<p>For the probability mass function, see <code><a href="../../stats/html/Binomial.html">dbinom</a></code>.
+</p>
+<p>The characteristic function is given by
+</p>
+<p style="text-align: center;"><i>
+    phi(t) = [pe^(it) + (1-p)]^n 
+  </i></p>
+
+
+
+<h3>Cauchy Distribution</h3>
+
+<p>For the probability density function, see <code><a href="../../stats/html/Cauchy.html">dcauchy</a></code>.
+</p>
+<p>The characteristic function is given by
+</p>
+<p style="text-align: center;"><i>
+    phi(t) = e^(i*t*theta - sigma*|t|) 
+  </i></p>
+
+
+
+<h3>Chi-square Distribution</h3>
+
+<p>For the probability density function, see <code><a href="../../stats/html/Chisquare.html">dchisq</a></code>.
+</p>
+<p>The characteristic function is given by
+</p>
+<p style="text-align: center;"><i>
+    phi(t) = \frac{\exp(\frac{i&delta; t}{1 - 2it})}{(1 - 2it)^{df/2}} </i></p>
+
+
+
+<h3>Exponential Distribution</h3>
+
+<p>For the probability density function, see <code><a href="../../stats/html/Exponential.html">dexp</a></code>.
+</p>
+<p>This is the special case of gamma when <i>&alpha; = 1</i>.
+</p>
+
+
+<h3>F Distribution</h3>
+
+<p>For the probability density function, see <code><a href="../../stats/html/Fdist.html">df</a></code>.
+</p>
+<p>For the central <i>F</i> we use confluent hypergeometric function of the second kind,
+also known as <code><a href="../../fAsianOptions/help/kummerU.html">kummerU</a></code>, from the
+<code>fAsianOptions</code> package.
+</p>
+<p>For noncentral <i>F</i> we use confluent hypergeometric function of the
+first kind.  See the vignette for details. 
+</p>
+
+
+<h3>Gamma Distribution</h3>
+
+<p>For the probability density function, see <code><a href="../../stats/html/GammaDist.html">dgamma</a></code>.
+</p>
+<p>The characteristic function is given by
+</p>
+<p style="text-align: center;"><i>
+    phi(t) = (1 - beta*i*t)^(-alpha) 
+  </i></p>
+
+
+
+<h3>Geometric Distribution</h3>
+
+<p>For the probability mass function, see <code><a href="../../stats/html/Geometric.html">dgeom</a></code>.
+</p>
+<p>This is the special case of negative binomial when <i>r = 1</i>.
+</p>
+
+
+<h3>Hypergeometric Distribution</h3>
+
+<p>For the probability mass function, see <code><a href="../../stats/html/Hypergeometric.html">dhyper</a></code>.
+</p>
+<p>The formula for the characteristic function is based on the Gaussian
+hypergeometric series, calculated with <code><a href="../../hypergeo/help/hypergeo.html">hypergeo</a></code> in
+package <code>hypergeo</code>.  It is too complicated to be included here; please see
+the vignette.
+</p>
+
+
+<h3>Logistic Distribution</h3>
+
+<p>For the probability density function, see <code><a href="../../stats/html/Logistic.html">dlogis</a></code>.
+</p>
+<p>The characteristic function is given by
+</p>
+<p style="text-align: center;"><i>
+    phi(t) = &pi; t \cosech &pi; t 
+  </i></p>
+
+
+
+<h3>Lognormal Distribution</h3>
+
+<p>For the probability density function, see <code><a href="../../stats/html/Lognormal.html">dlnorm</a></code>.
+</p>
+<p>This characteristic function is uniquely complicated and delicate, but
+there is a recent numerical algorithm for computation due to Beaulieu
+(2008).  See the vignette and the References.
+</p>
+
+
+<h3>Negative Binomial Distribution</h3>
+
+<p>For the probability mass function, see <code><a href="../../stats/html/NegBinomial.html">dnbinom</a></code>.
+</p>
+<p>The characteristic function is given by
+</p>
+<p style="text-align: center;"><i>
+    phi(t) = [p/(1-(1-p)*e^(it))]^r 
+  </i></p>
+
+
+
+<h3>Normal Distribution</h3>
+
+<p>For the probability density function, see <code><a href="../../stats/html/Normal.html">dnorm</a></code>.
+</p>
+<p>The characteristic function is
+</p>
+<p style="text-align: center;"><i>
+    phi(t) = e^(i*mu*t + t^2 * sigma^2 /2) </i></p>
+
+
+
+<h3>Poisson Distribution</h3>
+
+<p>For the probability mass function, see <code><a href="../../stats/html/Poisson.html">dpois</a></code>.
+</p>
+<p>The characteristic function is
+</p>
+<p style="text-align: center;"><i>
+    phi(t) = e^(lambda*(e^it - 1))
+  </i></p>
+
+
+
+<h3>Wilcoxon Sign Rank Distribution</h3>
+
+<p>For the probability density function, see <code><a href="../../stats/html/SignRank.html">dsignrank</a></code>.
+</p>
+<p>The characteristic function is calculated according to the definition.
+</p>
+
+
+<h3>Student's t Distribution</h3>
+
+<p>For the probability density function, see <code><a href="../../stats/html/TDist.html">dt</a></code>.
+</p>
+<p>See the vignette for a formula for the characteristic function for central t.
+</p>
+<p>As of the time of this writing, we must calculate the characteristic function
+of the noncentral t with numerical integration according to the definition.
+</p>
+
+
+<h3>Continuous Uniform Distribution</h3>
+
+<p>For the probability density function, see <code><a href="../../stats/html/Uniform.html">dunif</a></code>.
+</p>
+<p>The characteristic function is
+</p>
+<p style="text-align: center;"><i>
+    phi(t) = \frac{e^(itb) - e^(ita)}{(b - a)it}
+  </i></p>
+
+
+
+<h3>Weibull Distribution</h3>
+
+<p>For the probability density function, see <code><a href="../../stats/html/Weibull.html">dweibull</a></code>.
+</p>
+<p>We must at the time of this writing calculate the characteristic function
+with numerical integration according to the definition.
+</p>
+
+
+<h3>Wilcoxon Rank Sum Distribution</h3>
+
+<p>For the probability density function, see <code><a href="../../stats/html/Wilcoxon.html">dwilcox</a></code>.
+</p>
+<p>The characteristic function is calculated according to the definition.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>G. Jay Kerns <a href="mailto:gkerns@ysu.edu">gkerns@ysu.edu</a>.</p>
+
+
+<h3>Source</h3>
+
+<p>For <code>clnorm</code> a fast numerical algorithm is used that originated with and was
+published and communicated to me by N. C. Beaulieu: see
+</p>
+
+
+<h3>References</h3>
+
+<p>Abramowitz, M. and Stegun, I. A. (1972)
+<em>Handbook of Mathematical Functions.</em> New York: Dover.  
+</p>
+<p>Beaulieu, N.C. (2008) Fast convenient numerical computation of
+lognormal characteristic functions, IEEE Transactions on Communications,
+Volume <b>56</b>,  Issue 3, 331&ndash;333.
+</p>
+<p>Hurst, S. (1995) The Characteristic Function of the Student-t
+Distribution, Financial Mathematics Research Report No. FMRR006-95,
+Statistics Research Report No. SRR044-95.
+</p>
+<p>Johnson, N. L., Kotz, S., and Kemp, A. W. (1992)
+<em>Univariate Discrete Distributions</em>,
+Second Edition. New York: Wiley.
+</p>
+<p>Johnson, N. L., Kotz, S. and Balakrishnan, N. (1995)
+<em>Continuous Univariate Distributions</em>, volume 1.
+New York: Wiley.
+</p>
+<p>Johnson, N. L., Kotz, S. and Balakrishnan, N. (1995)
+<em>Continuous Univariate Distributions</em>, volume 2. 
+New York: Wiley.
+</p>
+<p>Lukacs, E. (1970)
+<em>Characteristic Functions</em>,
+Second Edition. London: Griffin.
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../../base/html/Bessel.html">besselK</a></code>
+<code><a href="../../fAsianOptions/help/kummerM.html">kummerM</a></code> 
+<code><a href="../../fAsianOptions/help/kummerU.html">kummerU</a></code>
+<code><a href="../../hypergeo/help/hypergeo.html">hypergeo</a></code> 
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>prob</em> version 1.0-1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

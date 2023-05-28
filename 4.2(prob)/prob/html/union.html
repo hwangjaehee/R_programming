@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Union of Subsets</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body><div class="container">
+
+<table width="100%" summary="page for union {prob}"><tr><td>union {prob}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Union of Subsets</h2>
+
+<h3>Description</h3>
+
+<p>Calculates the union of subsets of a probability space.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+union(x, ...)
+
+## Default S3 method:
+union(x, y, ...)
+
+## S3 method for class 'data.frame'
+union(x, y, ...)
+
+## S3 method for class 'ps'
+union(x, y, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x, y</code></td>
+<td>
+<p>vectors, data frames, or <code>ps</code> objects containing a sequence of items (conceptually) </p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>further arguments to be passed to or from other methods.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>This function operates row-wise on dataframes, and element-wise among the outcomes of <code>ps</code> objects. The elements of <code>union(x,y)</code> are those elements in <code>x</code> or <code>y</code>, or both. The definition is taken to match the version in the <code>base</code> package.
+</p>
+
+
+<h3>Value</h3>
+
+<p>A data frame or subset of a probability space of the same type as its arguments.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>G. Jay Kerns <a href="mailto:gkerns@ysu.edu">gkerns@ysu.edu</a>, based on a suggestion made by Brian Ripley in <code>R</code>-devel, 12/11/07.</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../help/intersect.html">intersect</a></code>, <code><a href="../help/setdiff.html">setdiff</a></code></p>
+
+
+<h3>Examples</h3>
+
+<pre>
+S &lt;- cards()
+A &lt;- subset(S, suit == "Heart")
+B &lt;- subset(S, rank == "A" )
+union(A, B)
+   </pre>
+
+<hr /><div style="text-align: center;">[Package <em>prob</em> version 1.0-1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

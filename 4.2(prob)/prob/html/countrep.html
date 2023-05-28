@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Count Repetitions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body><div class="container">
+
+<table width="100%" summary="page for countrep {prob}"><tr><td>countrep {prob}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Count Repetitions</h2>
+
+<h3>Description</h3>
+
+<p>Counts the number of repetitions of <code>vals</code> in a given vector <code>x</code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+countrep(x, ...)
+
+## Default S3 method:
+countrep(x, vals = unique(x), nrep = 2,  ...)
+
+## S3 method for class 'data.frame'
+countrep(x, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>an object in which repeats should be counted.</p>
+</td></tr>
+<tr valign="top"><td><code>vals</code></td>
+<td>
+<p>values that may be repeated.</p>
+</td></tr>
+<tr valign="top"><td><code>nrep</code></td>
+<td>
+<p>exact number of repeats desired, defaults to pairs.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>further arguments to be passed to or from other methods.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>This is a generic function, with methods supplied for data frames and vectors. The default behavior counts the number of pairs of elements of <code>x</code>.  One can find the number of triples, etc., by changing the <code>nrep</code> argument.  If there are specific values for which one is looking for repeats, these can be specified with the <code>vals</code> argument.  Note that the function only checks for <em>exactly</em> <code>nrep</code> instances, so two pairs of a specific element would be counted as 0 pairs and 1 quadruple. See the examples. 
+</p>
+<p>The data frame method uses <code>apply</code> to apply <code>countrep.default</code> to each row of the data frame.
+</p>
+
+
+<h3>Value</h3>
+
+<p>If <code>x</code> is a vector, then the value is an integer.  If <code>x</code> is a data frame then the value is a vector, with entries the corresponding value for the respective rows of <code>x</code>
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>G. Jay Kerns <a href="mailto:gkerns@ysu.edu">gkerns@ysu.edu</a>.</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../help/isrep.html">isrep</a></code></p>
+
+
+<h3>Examples</h3>
+
+<pre>
+x &lt;- c(3,3,2,2,3,3,4,4)
+countrep(x)  # one pair each of 2s and 4s
+countrep(x, nrep = 4) 
+countrep(x, vals = 4) # one pair of 4s
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>prob</em> version 1.0-1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

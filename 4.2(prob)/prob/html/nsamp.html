@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Number of Samples from an Urn</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body><div class="container">
+
+<table width="100%" summary="page for nsamp {prob}"><tr><td>nsamp {prob}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Number of Samples from an Urn</h2>
+
+<h3>Description</h3>
+
+<p>Calculates the number of samples from an urn under different sampling scenarios.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+nsamp(n, k, replace = FALSE, ordered = FALSE)
+
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>n</code></td>
+<td>
+<p>an integer or integer vector.</p>
+</td></tr>
+<tr valign="top"><td><code>k</code></td>
+<td>
+<p>an integer or integer vector.</p>
+</td></tr>
+<tr valign="top"><td><code>replace</code></td>
+<td>
+<p>logical indicating whether sampling should be done with replacement.</p>
+</td></tr>
+<tr valign="top"><td><code>ordered</code></td>
+<td>
+<p>logical indicating whether order among samples is important.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>The <code>nsamp()</code> function will calculate the number of samples from an urn under assorted assumptions on the sampling procedure.  The arguments are: <code>n</code>, the number of (distinguishable) objects in the urn, <code>k</code>, the sample size, and <code>replace</code>, <code>ordered</code> as documented in <code><a href="../help/urnsamples.html">urnsamples</a></code>.
+</p>
+<p><code>nsamp()</code> is vectorized, so that entering vectors instead of numbers for <code>n</code>, <code>k</code>, <code>replace</code>, and <code>ordered</code> results in a vector of corresponding answers.
+</p>
+<p>The formulas used in the four possible combinations of <code>replace</code> and <code>ordered</code> are as follows.
+</p>
+
+<ul>
+<li>
+<p>When <code>replace = TRUE</code> and <code>ordered = TRUE</code>, the value is <i>n^k</i>.
+</p>
+</li>
+<li>
+<p>When <code>replace = FALSE</code> and  <code>ordered = TRUE</code>, the value is
+<i>n!/(n-k)!</i>.
+</p>
+</li>
+<li>
+<p>When <code>replace = FALSE</code> and <code>ordered = FALSE</code>, the value is
+<i>n!/[k!(n-k)!]</i>.
+</p>
+</li>
+<li>
+<p>When <code>replace = TRUE</code> and  <code>ordered = FALSE</code>, the value is
+<i>(n-1+k)!/[(n-1)!k!]</i>.
+</p>
+</li></ul>
+
+
+
+<h3>Value</h3>
+
+<p>A number.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>G. Jay Kerns <a href="mailto:gkerns@ysu.edu">gkerns@ysu.edu</a>.</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../help/urnsamples.html">urnsamples</a></code></p>
+
+
+<h3>Examples</h3>
+
+<pre>
+nsamp(n=3, k=2, replace = TRUE, ordered = TRUE)
+nsamp(n=3, k=2, replace = TRUE, ordered = FALSE)
+nsamp(n=3, k=2, replace = FALSE, ordered = FALSE)
+nsamp(n=3, k=2, replace = FALSE, ordered = TRUE)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>prob</em> version 1.0-1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Intersection of Subsets</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body><div class="container">
+
+<table width="100%" summary="page for intersect {prob}"><tr><td>intersect {prob}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Intersection of Subsets</h2>
+
+<h3>Description</h3>
+
+<p>Calculates the intersection of subsets of a probability space.  Comparisons are made row-wise, so that in the data frame case, <code>intersect(A,B)</code> is a data frame with those rows that are both in <code>A</code> and in <code>B</code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+intersect(x, ...)
+
+## Default S3 method:
+intersect(x, y, ...)
+
+## S3 method for class 'data.frame'
+intersect(x, y, ...)
+
+## S3 method for class 'ps'
+intersect(x, y, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x, y</code></td>
+<td>
+<p>vectors, data frames, or <code>ps</code> objects containing a sequence of elements (conceptually). </p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>further arguments to be passed to or from other methods.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>This is a generic function, extended from the <code>intersect</code> function in the <code>base</code> package.  The elements of <code>intersect(x,y)</code> are those elements in <code>x</code> and in <code>y</code>. The original definition is preserved in the case that <code>x</code> and <code>y</code> are vectors of the same mode.
+</p>
+
+
+<h3>Value</h3>
+
+<p>A vector, data frame, or subset of a probability space of the same type as its arguments.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>G. Jay Kerns <a href="mailto:gkerns@ysu.edu">gkerns@ysu.edu</a>, based on a suggestion made by Brian Ripley in <code>R</code>-devel, 12/11/07.</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../help/union.html">union</a></code>, <code><a href="../help/setdiff.html">setdiff</a></code></p>
+
+
+<h3>Examples</h3>
+
+<pre>
+S &lt;- cards()
+A &lt;- subset(S, suit == "Heart")
+B &lt;- subset(S, rank == "A" )
+intersect(A, B)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>prob</em> version 1.0-1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

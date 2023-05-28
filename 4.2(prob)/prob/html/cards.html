@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: A Standard Set of Playing Cards</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body><div class="container">
+
+<table width="100%" summary="page for cards {prob}"><tr><td>cards {prob}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>A Standard Set of Playing Cards</h2>
+
+<h3>Description</h3>
+
+<p>The title says it all.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+cards(jokers = FALSE, makespace = FALSE)
+
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>jokers</code></td>
+<td>
+<p>logical.</p>
+</td></tr>
+<tr valign="top"><td><code>makespace</code></td>
+<td>
+<p>logical.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>This generates a data frame sample space of a standard deck of 52 playing cards.  Optionally, the user can specify that Jokers be included, which have a <code>rank</code> but with <code>suit</code> a missing value.
+</p>
+
+
+<h3>Value</h3>
+
+<p>A data frame with columns <code>rank</code> and <code>suit</code>, and optionally a column of equally likely <code>probs</code>.
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../help/rolldie.html">rolldie</a></code>, <code><a href="../help/tosscoin.html">tosscoin</a></code>, and <code><a href="../help/roulette.html">roulette</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+cards()
+cards(makespace = TRUE)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>prob</em> version 1.0-1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Test Whether One Vector Is In Another Vector</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body><div class="container">
+
+<table width="100%" summary="page for isin {prob}"><tr><td>isin {prob}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Test Whether One Vector Is In Another Vector</h2>
+
+<h3>Description</h3>
+
+<p>See the title.</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+isin(x, ...)
+
+## Default S3 method:
+isin(x, y, ordered = FALSE, ...)
+
+## S3 method for class 'data.frame'
+isin(x, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x, y</code></td>
+<td>
+<p>vectors.</p>
+</td></tr>
+<tr valign="top"><td><code>ordered</code></td>
+<td>
+<p>logical.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>further arguments to be passed to or from other methods.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>The function will only return <code>TRUE</code> if every element of <code>y</code> is present in the vector <code>x</code>, counting multiplicity.  See the examples below.  Of <code>ordered = TRUE</code>, then elements must be in the vector <code>x</code> in the order specified in <code>y</code>.  Compare this to the behavior of the <code>%in%</code> function in the <code>base</code> package.
+</p>
+<p>This is a generic function with a moethod for data frames, which applies <code>isin()</code> to each row of the data frame, with a vector as a result.
+</p>
+
+
+<h3>Value</h3>
+
+<p>Logical, or a vector of logicals.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>G. Jay Kerns <a href="mailto:gkerns@ysu.edu">gkerns@ysu.edu</a>.</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../help/isrep.html">isrep</a></code></p>
+
+
+<h3>Examples</h3>
+
+<pre>
+x &lt;- 1:10
+y &lt;- 3:7
+z &lt;- c(3,3,7)
+isin(x,y)
+isin(x,z)
+isin(x, c(3,4,5), ordered = TRUE)
+isin(x, c(3,5,4), ordered = TRUE)
+
+S &lt;- rolldie(4)
+subset(S, isin(S, c(2,2,6), ordered = TRUE))
+
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>prob</em> version 1.0-1 <a href="00Index.html">Index</a>]</div>
+</div></body></html>

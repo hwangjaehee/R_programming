@@ -1,0 +1,22 @@
+Package: fAsianOptions
+Title: Rmetrics - EBM and Asian Option Valuation
+Date: 2017-11-12
+Version: 3042.82
+Author: Diethelm Wuertz [aut],
+	Tobias Setz [cre]
+Maintainer: Tobias Setz <tobias.setz@live.com>
+Description: Provides functions for pricing
+	and valuating Asian Options together with tools for analyzing
+    and modeling Exponential Brownian Motion (EBM).
+Depends: R (>= 2.15.1), timeDate, timeSeries, fBasics, fOptions
+Imports: stats
+Suggests: methods, RUnit
+LazyData: yes
+License: GPL (>= 2)
+URL: http://www.rmetrics.org
+NeedsCompilation: yes
+Packaged: 2017-11-17 07:23:59 UTC; Tobias Setz
+Repository: CRAN
+Date/Publication: 2017-11-17 12:09:14 UTC
+Built: R 4.1.1; x86_64-w64-mingw32; 2021-11-01 20:28:25 UTC; windows
+Archs: i386, x64
